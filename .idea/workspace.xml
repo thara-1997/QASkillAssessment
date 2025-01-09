@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1218f539-b247-4199-8e10-423a905d8aeb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pragmatic/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ebayRelatedProductVerification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ebayRelatedProductVerification.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,12 +40,13 @@
     "TestNG.ebayRelatedProductVerification.verifyMainProductPageLoadingSuccessfully.executor": "Run",
     "TestNG.ebayRelatedProductVerification.verifyPriceRangeOfMainProductsAndRelatedProducts.executor": "Run",
     "TestNG.ebayRelatedProductVerification.verifyRelatedProductFunctionality.executor": "Run",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/user/Documents/GitHub/QASkillAssessment",
     "onboarding.tips.debug.path": "C:/Selenium-Pragmetic/QASkillAssessment/src/main/java/com/pragmatic/Main.java"
   }
 }]]></component>
-  <component name="RunManager" selected="TestNG.ebayRelatedProductVerification.verifyRelatedProductFunctionality">
+  <component name="RunManager">
     <configuration name="ebayRelatedProductVerification.verifyMainProductPageLoadingSuccessfully" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="QASkillAssessment" />
       <option name="PACKAGE_NAME" value="" />

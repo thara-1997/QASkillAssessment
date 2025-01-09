@@ -3,6 +3,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -45,10 +46,12 @@ public class ebayRelatedProductVerification {
     @Test
     public void verifyRelatedProductFunctionality() throws InterruptedException {
         driver.get("https://www.ebay.com/itm/125682967979?_skw=Wallet&itmmeta=01JH0MGDK89N82EY5V9QTFMPCX&hash=item1d4349e5ab:g:ilEAAOSwTORi-3JD&itmprp=enc%3AAQAJAAAA4HoV3kP08IDx%2BKZ9MfhVJKlOF32zKFs33pNn22dXQXbDEyN3i4ruqLPT0ggOr0GvKVTip%2BYGPD8urTV%2FchQiO8ZEBzfDe3%2Bwj8Vd0mHUiFsUe3HLLc%2FsD%2F3k2ug3xFkzvnMo%2FzUHr8vqJk9%2FMJXwIp1F31i1DYsaeSYmLd73cm0lgrzzGAABwZG5MplY9Tb66RQ3GG6%2FI5PZTOO%2B6Dq3UaH%2F7jeO1d4M%2FYIrhJbH1o8VPDXnCREcPAGCSdzLRom5gQeZ1HxWO%2FTR%2BYVAkNmsdR8ca4VDAfvNN1L5P%2Fa58jRa%7Ctkp%3ABFBM2tnBlIhl");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement similarItemText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[contains(text(), 'Similar')]")));
+
         JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", similarItemText);
+        js.executeScript("javascript:window.scrollBy(250,570)");
+        WebElement similarItemText= driver.findElement(By.xpath("//h2[contains(text(), 'Similar')]"));
+        String text1 = similarItemText.getText();
+        System.out.println(text1);
 
         List<WebElement> relatedProducts =driver.findElements(By.xpath("//div[@class='Ihl- lA6f']//div[@class='_3hIg f17z']"));
         Assert.assertTrue(relatedProducts.size() <= 6, "Test failed: More than 6 related products found!");
@@ -71,16 +74,17 @@ public class ebayRelatedProductVerification {
         double mainPrice = convertPriceToDouble(mainProductPriceText);
         System.out.println("Main Product price: " +mainPrice);
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        WebElement similarItemText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[normalize-space()='Similar items']")));
         JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", similarItemText);
+        js.executeScript("javascript:window.scrollBy(250,570)");
+        WebElement similarItemText= driver.findElement(By.xpath("//h2[contains(text(), 'Similar')]"));
+        String text1 = similarItemText.getText();
+        System.out.println(text1);
 
-        List<WebElement> relatedProducts =driver.findElements(By.xpath("//div[@class='TaQa _4QSx']//div[@class='ZXXo skpn']"));
+        List<WebElement> relatedProducts =driver.findElements(By.xpath("//div[@class='Ihl- lA6f']//div[@class='_3hIg f17z']"));
         int index = 0;
         for (WebElement productElement: relatedProducts){
             index++;
-            String relatedProductPriceText = productElement.findElement(By.xpath("(//div[@class='UKGh'])[" + index + "]")).getText();
+            String relatedProductPriceText = productElement.findElement(By.xpath("(//div[@class='g2jY'])[" + index + "]")).getText();
             double relatedProductPrice = convertPriceToDouble(relatedProductPriceText);
 
             // Check if the item price falls within ±1 USD of the main item's price
@@ -95,5 +99,10 @@ public class ebayRelatedProductVerification {
     private double convertPriceToDouble(String priceText) {
         priceText = priceText.replaceAll("[^0-9.]", ""); // Remove non-numeric characters
         return Double.parseDouble(priceText);
+    }
+
+    @AfterMethod
+    public void closeBrowser(){
+        driver.quit();
     }
 }
